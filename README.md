@@ -23,8 +23,6 @@
 9. [Tech Stack](#-tech-stack)
 10. [MVP Scope](#-mvp-scope)
 11. [Future Improvements](#-future-improvements)
-12. [Getting Started](#-getting-started)
-13. [Contributing](#-contributing)
 
 ---
 
