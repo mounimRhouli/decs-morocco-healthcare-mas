@@ -23,6 +23,8 @@
 9. [Tech Stack](#-tech-stack)
 10. [MVP Scope](#-mvp-scope)
 11. [Future Improvements](#-future-improvements)
+12. [Getting Started](#-getting-started)
+13. [Contributing](#-contributing)
 
 ---
 
@@ -691,7 +693,7 @@ flowchart TD
 |-------|-----------|---------|
 | **Agent Framework** | LangGraph | Agent state machines, lifecycle management, and graph-based workflow orchestration |
 | **AI Chains** | LangChain | Severity scoring chains, proposal evaluation chains, LLM reasoning wrappers |
-| **LLM Backend** | gemini or any other free apis | Natural language triage reasoning and explainability |
+| **LLM Backend** | GPT-4o / Claude 3.5 | Natural language triage reasoning and explainability |
 | **Backend API** | FastAPI (Python) | RESTful endpoints, WebSocket server, event bus |
 | **Frontend** | React + TypeScript | Real-time dashboard, map visualization, agent monitoring |
 | **Map Rendering** | Leaflet.js / Mapbox GL | Live ambulance tracking and hospital locations |
@@ -781,6 +783,110 @@ The Minimum Viable Product focuses on demonstrating the full coordination pipeli
 | **Cross-Border Coordination** | Protocol extension for coordination with hospitals in neighboring regions |
 | **Mobile Crew App** | React Native app for paramedic teams with offline-first capability |
 | **Regulatory Compliance** | Full audit trail aligned with Moroccan health data regulations |
+
+---
+
+## 🚦 Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 20+
+- Docker & Docker Compose
+- OpenAI or Anthropic API key
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/decs-mas.git
+cd decs-mas
+
+# Copy environment configuration
+cp .env.example .env
+# Edit .env and add your LLM API key and database credentials
+
+# Start all services
+docker-compose up --build
+
+# The system will be available at:
+#   Frontend:   http://localhost:3000
+#   API:        http://localhost:8000
+#   API Docs:   http://localhost:8000/docs
+```
+
+### Running a Demo Simulation
+
+```bash
+# Trigger a simulated CRITICAL emergency scenario
+curl -X POST http://localhost:8000/api/v1/simulation/trigger \
+  -H "Content-Type: application/json" \
+  -d '{
+    "scenario": "cardiac_arrest",
+    "location": { "lat": 34.6805, "lng": -1.9071 },
+    "patient_age": 58,
+    "severity_hint": "critical"
+  }'
+```
+
+### Project Structure
+
+```
+decs-mas/
+├── agents/
+│   ├── ambulance_agent.py      # AmbulanceAgent implementation
+│   ├── hospital_agent.py       # HospitalAgent implementation
+│   ├── triage_agent.py         # TriageAgent + severity scoring
+│   ├── patient_agent.py        # PatientAgent + consent engine
+│   └── cnp_broker.py           # Contract Net Protocol engine
+├── api/
+│   ├── main.py                 # FastAPI app entry point
+│   ├── routers/                # Route definitions
+│   └── websocket/              # WebSocket handlers
+├── ai/
+│   ├── chains/                 # LangChain chains
+│   └── graphs/                 # LangGraph state machines
+├── models/
+│   ├── schemas.py              # Pydantic data models
+│   └── database.py             # SQLAlchemy ORM models
+├── frontend/
+│   ├── src/
+│   │   ├── components/         # React components
+│   │   ├── pages/              # Dashboard, Map, Agents
+│   │   └── hooks/              # WebSocket + API hooks
+│   └── package.json
+├── docker-compose.yml
+├── .env.example
+└── README.md
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from healthcare technologists, AI researchers, and emergency response experts.
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'feat: add your feature description'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request with a clear description of the change and its rationale
+
+Please read `CONTRIBUTING.md` for our code of conduct and development guidelines.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Team
+
+Built with ❤️ for Morocco's emergency healthcare system.
+
+> *"Every second of coordination saved is a life that stays in the world."*
 
 ---
 
