@@ -691,7 +691,7 @@ flowchart TD
 |-------|-----------|---------|
 | **Agent Framework** | LangGraph | Agent state machines, lifecycle management, and graph-based workflow orchestration |
 | **AI Chains** | LangChain | Severity scoring chains, proposal evaluation chains, LLM reasoning wrappers |
-| **LLM Backend** | gemini free or other free apis| Natural language triage reasoning and explainability |
+| **LLM Backend** | gemini or any other free apis | Natural language triage reasoning and explainability |
 | **Backend API** | FastAPI (Python) | RESTful endpoints, WebSocket server, event bus |
 | **Frontend** | React + TypeScript | Real-time dashboard, map visualization, agent monitoring |
 | **Map Rendering** | Leaflet.js / Mapbox GL | Live ambulance tracking and hospital locations |
